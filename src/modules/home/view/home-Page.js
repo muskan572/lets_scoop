@@ -119,8 +119,8 @@ const HomePage = () => {
             </Typography>
 
             <Button
-            component={Link}
-            to={PATH_DASH.categories}
+              component={Link}
+              to={PATH_DASH.categories}
               variant="contained"
               disableRipple
               sx={{

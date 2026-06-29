@@ -24,90 +24,91 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-
 import NavbarMenu from "./navbarMenu";
 import { Link, Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
-
 export default function Navbars() {
   const [input, setInput] = useState("");
-
   const [anchorEl, setAnchorE1] = useState(null);
   const openn = Boolean(anchorEl);
-
   const handleClose = () => {
     setAnchorE1(null);
   };
-
   const handleClick = (event) => {
     setAnchorE1(event.currentTarget);
   };
-
   const [open, setOpen] = useState(false);
-
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
   };
   const theme = useTheme();
-
   const totalItemCount = useSelector(
     (state) =>
       state.cart.items.reduce((acc, item) => acc + item.quantity, 0) +
       state.cart.products.reduce((acc, item) => acc + item.quantity, 0),
   );
-
   const DrawerList = (
     <Box sx={{ width: 250 }} onClick={toggleDrawer(false)}>
+      {" "}
       <List className="text-xl font-semibold">
+        {" "}
         <IconButton sx={{ display: "flex", justifyContent: "flex-end" }}>
-          <FavoriteBorderIcon />
-        </IconButton>
+          {" "}
+          <FavoriteBorderIcon />{" "}
+        </IconButton>{" "}
         {["Home", "Products", " About Us ", "Contact Us"].map((text, index) => (
           <ListItem key={text} disablePadding>
+            {" "}
             <ListItemButton>
+              {" "}
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
+                {" "}
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}{" "}
+              </ListItemIcon>{" "}
+              <ListItemText primary={text} />{" "}
+            </ListItemButton>{" "}
           </ListItem>
-        ))}
-      </List>
+        ))}{" "}
+      </List>{" "}
     </Box>
   );
-
   return (
     <>
+      {" "}
       <AppBar
         position="static"
         sx={{ bgcolor: "transparent", boxShadow: "none" }}
       >
+        {" "}
         <Toolbar>
+          {" "}
           <Stack
             direction="row"
             spacing={5}
             sx={{ flexGrow: 1, color: "black" }}
           >
+            {" "}
             <img
               src="assets/images/Logo.png"
               alt="ice-cream parlour"
               style={{ width: "150px" }}
-            />
+            />{" "}
             <Stack
               direction="row"
               spacing={8}
               padding={2}
               sx={{ display: { xs: "none", lg: "block" } }}
             >
+              {" "}
               <Button
                 component={Link}
                 to={PATH_DASH.home}
                 color="inherit"
                 sx={{ fontWeight: "normal", fontSize: "17px" }}
               >
-                Home
-              </Button>
-
+                {" "}
+                Home{" "}
+              </Button>{" "}
               <Button
                 color="inherit"
                 id="Products-button"
@@ -118,112 +119,116 @@ export default function Navbars() {
                 endIcon={<KeyboardArrowDownIcon />}
                 sx={{ fontWeight: "normal", fontSize: "17px" }}
               >
-                Products
-              </Button>
-
+                {" "}
+                Products{" "}
+              </Button>{" "}
               <Button
                 component={Link}
                 to={PATH_DASH.aboutUs}
                 color="inherit"
                 sx={{ fontWeight: "normal", fontSize: "17px" }}
               >
-                About Us
-              </Button>
+                {" "}
+                About Us{" "}
+              </Button>{" "}
               <Button
                 component={Link}
                 to={PATH_DASH.categories}
                 color="inherit"
                 sx={{ fontWeight: "normal", fontSize: "17px" }}
               >
-                Categories
-              </Button>
-
+                {" "}
+                Categories{" "}
+              </Button>{" "}
               <Button
                 component={Link}
                 to={PATH_DASH.contact}
                 color="inherit"
                 sx={{ fontWeight: "normal", fontSize: "17px" }}
               >
-                Contact Us
-              </Button>
-            </Stack>
-          </Stack>
+                {" "}
+                Contact Us{" "}
+              </Button>{" "}
+            </Stack>{" "}
+          </Stack>{" "}
           <Menu
             id="Products-menu"
             anchorEl={anchorEl}
             open={openn}
             onClick={handleClose}
           >
-            <NavbarMenu />
-          </Menu>
-
+            {" "}
+            <NavbarMenu />{" "}
+          </Menu>{" "}
           <IconButton
             component={Link}
             to={PATH_DASH.wishlist}
             aria-label="menu"
           >
+            {" "}
             <FavoriteBorderIcon
               sx={{
                 color: theme.palette.grey[900],
                 height: "25px",
                 display: { xs: "none", lg: "block" },
               }}
-            />
-          </IconButton>
-
+            />{" "}
+          </IconButton>{" "}
           <IconButton
             component={Link}
             to={PATH_DASH.addtocart}
             aria-label="View cart"
           >
+            {" "}
             <Badge
               badgeContent={totalItemCount}
               sx={{ color: theme.palette.grey[900] }}
             >
+              {" "}
               <ShoppingBagOutlinedIcon
                 sx={{ width: { xs: "20px", sm: "25px" } }}
-              />
-            </Badge>
-          </IconButton>
-
+              />{" "}
+            </Badge>{" "}
+          </IconButton>{" "}
           <IconButton>
+            {" "}
             <SearchIcon
               sx={{
                 color: theme.palette.grey[900],
                 display: { xs: "block", md: "none" },
                 width: { xs: "20px", sm: "25px" },
               }}
-            />
-          </IconButton>
-
+            />{" "}
+          </IconButton>{" "}
           <IconButton
             onClick={toggleDrawer(true)}
-            sx={{
-              display: { xs: "block", lg: "none" },
-            }}
+            sx={{ display: { xs: "block", lg: "none" } }}
           >
+            {" "}
             <MenuIcon
               style={{
                 color: theme.palette.grey[900],
                 height: "30px",
                 width: { xs: "20px", sm: "25px" },
               }}
-            />
-          </IconButton>
-
+            />{" "}
+          </IconButton>{" "}
           <Stack flexDirection="row" spacing={2}>
+            {" "}
             <Stack>
+              {" "}
               <Drawer
                 open={open}
                 onClose={toggleDrawer(false)}
                 sx={{ md: "hidden" }}
               >
-                {DrawerList}
-              </Drawer>
-            </Stack>
-          </Stack>
-
+                {" "}
+                {DrawerList}{" "}
+              </Drawer>{" "}
+            </Stack>{" "}
+          </Stack>{" "}
           <Stack sx={{ display: { xs: "none", md: "block" } }}>
+            {" "}
             <Button
               variant="contained"
               startIcon={<SearchIcon />}
@@ -231,13 +236,12 @@ export default function Navbars() {
                 backgroundColor: "black",
                 borderRadius: "20px",
                 color: theme.palette.grey[0],
-                "&:hover": {
-                  bgcolor: theme.palette.grey[900],
-                },
+                "&:hover": { bgcolor: theme.palette.grey[900] },
               }}
               disableElevation
               disableRipple
             >
+              {" "}
               <input
                 type="text"
                 placeholder="Search Here"
@@ -250,12 +254,12 @@ export default function Navbars() {
                 }}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-              />
-            </Button>
-          </Stack>
-        </Toolbar>
-      </AppBar>
-      <Outlet />
+              />{" "}
+            </Button>{" "}
+          </Stack>{" "}
+        </Toolbar>{" "}
+      </AppBar>{" "}
+      <Outlet />{" "}
     </>
   );
 }
