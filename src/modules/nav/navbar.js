@@ -53,7 +53,7 @@ export default function Navbars() {
   const totalItemCount = useSelector(
     (state) =>
       state.cart.items.reduce((acc, item) => acc + item.quantity, 0) +
-      state.cart.products.reduce((acc, item) => acc + item.quantity, 0)
+      state.cart.products.reduce((acc, item) => acc + item.quantity, 0),
   );
 
   const DrawerList = (
@@ -157,8 +157,11 @@ export default function Navbars() {
             <NavbarMenu />
           </Menu>
 
-          <IconButton component={Link}
-            to={PATH_DASH.wishlist} aria-label="menu">
+          <IconButton
+            component={Link}
+            to={PATH_DASH.wishlist}
+            aria-label="menu"
+          >
             <FavoriteBorderIcon
               sx={{
                 color: theme.palette.grey[900],
